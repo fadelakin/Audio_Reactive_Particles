@@ -21,6 +21,7 @@ void setup() {
   
   minim = new Minim(this);
   
+  // Change "Night.mp3" to your own mp3 file in the root folder
   player = minim.loadFile("Night.mp3", 512);
   player.loop();
   
