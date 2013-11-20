@@ -12,17 +12,17 @@ Particle[] particles;
 boolean fade = false;
 
 void setup() {
-  size(640, 480);
+  size(displayWidth, displayHeight);
   smooth();
   
   background(0);
   
-  colorMode(HSB, 360, 100, 100, 100);
+  colorMode(HSB, 360, 60, 100, 100);
   
   minim = new Minim(this);
   
   // Change "Night.mp3" to your own mp3 file in the root folder
-  player = minim.loadFile("Night.mp3", 512);
+  player = minim.loadFile("BubbleButt.mp3", 512);
   player.loop();
   
   fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -102,7 +102,7 @@ class Particle {
   
   void render() {
     stroke(h, s, b, 50);
-    fill(h, s, b, 20);
+    fill(h, s, b, 50);
     ellipse(loc.x, loc.y, radius*2, radius*2);
   }
 }
