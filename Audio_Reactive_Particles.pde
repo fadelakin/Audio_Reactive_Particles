@@ -12,6 +12,7 @@ Particle[] particles;
 boolean fade = false;
 
 void setup() {
+  // visualization is screensize
   size(displayWidth, displayHeight);
   smooth();
   
@@ -21,7 +22,7 @@ void setup() {
   
   minim = new Minim(this);
   
-  // Change "Night.mp3" to your own mp3 file in the root folder
+  // Change "Night.mp3" to your own mp3 file in the root folder or use any of the three mp3's I have provided.
   player = minim.loadFile("BubbleButt.mp3", 512);
   player.loop();
   
@@ -53,12 +54,14 @@ void draw() {
   }
 }
 
+// fades all particles and gives them tails
 void keyPressed() {
   if (key == 'f') {
     fade = !fade;
   }
 }
 
+// stops program when player is closed
 void stop() {
   player.close();
   minim.stop();
