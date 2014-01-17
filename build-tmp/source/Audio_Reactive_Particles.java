@@ -1,7 +1,28 @@
-import ddf.minim.*;
-import ddf.minim.signals.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import ddf.minim.*; 
+import ddf.minim.signals.*; 
+import ddf.minim.analysis.*; 
+import ddf.minim.effects.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Audio_Reactive_Particles extends PApplet {
+
+
+
+
+
 
 Minim minim;
 AudioPlayer player;
@@ -11,7 +32,7 @@ Particle[] particles;
 
 boolean fade = true;
 
-void setup() {
+public void setup() {
   // visualization is screensize
   size(displayWidth, displayHeight);
   smooth();
@@ -34,7 +55,7 @@ void setup() {
   }
 }
 
-void draw() {
+public void draw() {
   pushStyle();
   colorMode(RGB, 120);
   if(fade) {
@@ -55,14 +76,14 @@ void draw() {
 }
 
 // fades all particles and gives them tails
-void keyPressed() {
+public void keyPressed() {
   if (key == 'f') {
     fade = !fade;
   }
 }
 
 // stops program when player is closed
-void stop() {
+public void stop() {
   player.close();
   minim.stop();
   super.stop();
@@ -86,7 +107,7 @@ class Particle {
     b = 100;
   }
   
-  void update(float _r, float _b) {
+  public void update(float _r, float _b) {
     loc.add(vel);
     
     if (loc.x < 0 || loc.x > width) {
@@ -103,9 +124,18 @@ class Particle {
     b = map(_b, -1, 1, 0, 100);
   }
   
-  void render() {
+  public void render() {
     stroke(h, s, b, 50);
     fill(h, s, b, 50);
     ellipse(loc.x, loc.y, radius*2, radius*2);
+  }
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Audio_Reactive_Particles" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
   }
 }
