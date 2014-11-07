@@ -6,6 +6,7 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 FFT fft;
+PFont f;
 
 Particle[] particles;
 
@@ -14,6 +15,9 @@ boolean fade = true;
 void setup() {
   // visualization is screensize
   // size(800, 480);
+  
+  f = createFont("Arial", 48, true); // Arial, 16 point, anti-aliasing on
+  
   size(displayWidth, displayHeight);
   smooth();
   
@@ -24,7 +28,7 @@ void setup() {
   minim = new Minim(this);
   
   // Change "Night.mp3" to your own mp3 file in the root folder or use any of the three mp3's I have provided.
-  player = minim.loadFile("Icarus.mp3", 512);
+  player = minim.loadFile("Nights.mp3", 512);
   player.loop();
   
   fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -38,12 +42,22 @@ void setup() {
 void draw() {
   pushStyle();
   colorMode(RGB, 360);
+  fill(255);
+  textAlign(CENTER);
+  textFont(f, 72);
+  text("Welcome to CodeDay!", width/2, 250);
+  text("We'll be starting shortly", width/2, 500);
   if(fade) {
     noStroke();
-    fill(0, 8);
+    fill(0, 25);
     rect(0, 0, width, height);
   } else {
     background(0);
+    fill(255);
+    textAlign(CENTER);
+    textFont(f, 72);
+    text("Welcome to CodeDay!", width/2, 250);
+    text("We'll be starting shortly", width/2, 500);
   }
   popStyle();
   
