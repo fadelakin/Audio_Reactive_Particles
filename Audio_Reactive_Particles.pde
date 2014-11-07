@@ -13,6 +13,7 @@ boolean fade = true;
 
 void setup() {
   // visualization is screensize
+  // size(800, 480);
   size(displayWidth, displayHeight);
   smooth();
   
@@ -23,7 +24,7 @@ void setup() {
   minim = new Minim(this);
   
   // Change "Night.mp3" to your own mp3 file in the root folder or use any of the three mp3's I have provided.
-  player = minim.loadFile("Night.mp3", 512);
+  player = minim.loadFile("Icarus.mp3", 512);
   player.loop();
   
   fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -36,7 +37,7 @@ void setup() {
 
 void draw() {
   pushStyle();
-  colorMode(RGB, 120);
+  colorMode(RGB, 360);
   if(fade) {
     noStroke();
     fill(0, 8);
@@ -100,7 +101,7 @@ class Particle {
     radius = _r;
     radius = constrain(radius, 2, 100);
     
-    b = map(_b, -1, 1, 0, 100);
+    b = map(_b, -1, 1, 0, 200);
   }
   
   void render() {
