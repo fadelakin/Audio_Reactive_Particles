@@ -42,6 +42,7 @@ void setup() {
 void draw() {
   pushStyle();
   colorMode(RGB, 360);
+  // CodeDay stuff
   fill(255);
   textAlign(CENTER);
   textFont(f, 82);
@@ -53,6 +54,8 @@ void draw() {
     rect(0, 0, width, height);
   } else {
     background(0);
+    // processing is weird. Why do I need to do this twice. 
+    // should probably put this in a method call though
     fill(255);
     textAlign(CENTER);
     textFont(f, 82);
@@ -67,6 +70,10 @@ void draw() {
     particles[i].update(fft.getBand(i), player.mix.get(i*2));
     particles[i].render();
   }
+}
+
+void codeDay() {
+  
 }
 
 // fades all particles and gives them tails
