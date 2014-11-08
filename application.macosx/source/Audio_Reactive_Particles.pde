@@ -6,22 +6,29 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 FFT fft;
+PFont f;
 
 Particle[] particles;
 
-boolean fade = false;
+boolean fade = true;
 
 void setup() {
-  size(640, 480);
+  // visualization is screensize
+  // size(800, 480);
+  
+  f = createFont("Arial", 48, true); // Arial, 16 point, anti-aliasing on
+  
+  size(displayWidth, displayHeight);
   smooth();
   
   background(0);
   
-  colorMode(HSB, 360, 100, 100, 100);
+  colorMode(HSB, 360, 60, 60, 60);
   
   minim = new Minim(this);
   
-  player = minim.loadFile("Night.mp3", 1024);
+  // Change "Night.mp3" to your own mp3 file in the root folder or use any of the three mp3's I have provided.
+  player = minim.loadFile("Levels.mp3", 512);
   player.loop();
   
   fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -34,13 +41,23 @@ void setup() {
 
 void draw() {
   pushStyle();
-  colorMode(RGB, 255);
+  colorMode(RGB, 360);
+  fill(255);
+  textAlign(CENTER);
+  textFont(f, 82);
+  text("Welcome to CodeDay!", width/2, 400);
+  text("We'll be starting shortly.", width/2, 500);
   if(fade) {
     noStroke();
-    fill(0, 8);
+    fill(0, 25);
     rect(0, 0, width, height);
   } else {
     background(0);
+    fill(255);
+    textAlign(CENTER);
+    textFont(f, 82);
+    text("Welcome to CodeDay!", width/2, 400);
+    text("We'll be starting shortly.", width/2, 500);
   }
   popStyle();
   
@@ -52,12 +69,14 @@ void draw() {
   }
 }
 
+// fades all particles and gives them tails
 void keyPressed() {
   if (key == 'f') {
     fade = !fade;
   }
 }
 
+// stops program when player is closed
 void stop() {
   player.close();
   minim.stop();
@@ -96,12 +115,12 @@ class Particle {
     radius = _r;
     radius = constrain(radius, 2, 100);
     
-    b = map(_b, -1, 1, 0, 100);
+    b = map(_b, -1, 1, 0, 200);
   }
   
   void render() {
     stroke(h, s, b, 50);
-    fill(h, s, b, 20);
+    fill(h, s, b, 50);
     ellipse(loc.x, loc.y, radius*2, radius*2);
   }
 }
