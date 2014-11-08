@@ -63,6 +63,8 @@ void draw() {
   }
 }
 
+// method case for codeday. just remove the codeday method call if you don't
+// want the text to be displayed.
 void codeDay() {
   fill(255);
   textAlign(CENTER);
