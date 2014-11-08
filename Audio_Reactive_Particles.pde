@@ -43,24 +43,15 @@ void draw() {
   pushStyle();
   colorMode(RGB, 360);
   // CodeDay stuff
-  fill(255);
-  textAlign(CENTER);
-  textFont(f, 82);
-  text("Welcome to CodeDay!", width/2, 400);
-  text("We'll be starting shortly.", width/2, 500);
+  codeDay();
   if(fade) {
     noStroke();
     fill(0, 25);
     rect(0, 0, width, height);
   } else {
     background(0);
-    // processing is weird. Why do I need to do this twice. 
-    // should probably put this in a method call though
-    fill(255);
-    textAlign(CENTER);
-    textFont(f, 82);
-    text("Welcome to CodeDay!", width/2, 400);
-    text("We'll be starting shortly.", width/2, 500);
+    // call codeDay method to display text
+    codeDay();
   }
   popStyle();
   
@@ -73,7 +64,11 @@ void draw() {
 }
 
 void codeDay() {
-  
+  fill(255);
+  textAlign(CENTER);
+  textFont(f, 82);
+  text("Welcome to CodeDay!", width/2, 400);
+  text("We'll be starting shortly.", width/2, 500);
 }
 
 // fades all particles and gives them tails
