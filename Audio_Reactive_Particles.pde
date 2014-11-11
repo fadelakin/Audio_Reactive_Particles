@@ -28,7 +28,7 @@ void setup() {
   minim = new Minim(this);
   
   // Change "*.mp3" to your own mp3 file in the root folder or use any of the mp3 files I have provided.
-  player = minim.loadFile("Nights.mp3", 512);
+  player = minim.loadFile("Levels.mp3", 512);
   player.loop();
   
   fft = new FFT(player.bufferSize(), player.sampleRate());
@@ -69,8 +69,8 @@ void codeDay() {
   fill(255);
   textAlign(CENTER);
   textFont(f, 82);
-  text("Welcome to CodeDay!", width/2, 400);
-  text("We'll be starting shortly.", width/2, 500);
+  text("Thank you for coming to CodeDay", width/2, 400);
+  text("We'll be starting presentations shortly.", width/2, 500);
 }
 
 // fades all particles and gives them tails
